@@ -1,0 +1,28 @@
+
+    <div class="user-form">
+       <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput [(ngModel)]="userService.child.FirstName" name="first" required>
+          </mat-form-field>
+          <span class="error" *ngIf="flagOnErrorChild && userService.child.FirstName == ''">First Name is required</span>
+          <mat-form-field appearance="fill">
+            <mat-label>Birthday</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="userService.child.birthday" name="birth"  required>
+            <mat-hint>DD/MM/YYYY</mat-hint>
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <span class="error" *ngIf="flagOnErrorChild && userService.isBirthdayInvalid(userService.child.birthday)">Birthday is invalid</span>
+          <mat-form-field appearance="fill">
+            <mat-label>TZ</mat-label>
+            <input matInput [(ngModel)]="userService.child.TZ" name="tz"  required minlength="9" maxlength="9">
+          </mat-form-field>
+          <span class="error" *ngIf="flagOnErrorChild && userService.child.TZ == ''">TZ is required</span>
+          <span class="error" *ngIf="flagOnErrorChild && userService.child.TZ.length<9">TZ must contains 9 chars</span>
+          <mat-radio-group aria-label="Gender" [(ngModel)]="userService.child.Gender">
+            <mat-radio-button value="1">Female</mat-radio-button>
+            <mat-radio-button value="2">Male</mat-radio-button>
+          </mat-radio-group>
+          <span class="error" *ngIf="flagOnErrorChild && userService.child.Gender == -1">Gender is required</span>
+          <button mat-button color="primary" (click)="saveChild()">SAVE CHILD</button>
+    </div>

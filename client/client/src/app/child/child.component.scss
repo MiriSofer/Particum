@@ -1,0 +1,11 @@
+.user-form{
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+    padding: 1em;
+}
+
+.error{
+    font-size: 11px;
+    color:red;
+}
