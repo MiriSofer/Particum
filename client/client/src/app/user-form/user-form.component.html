@@ -1,52 +1,52 @@
 
 <form>
-   <div class="forms">
+  <div class="forms">
 <div class="user-form">
-   <mat-form-field appearance="fill">
-        <mat-label>First Name</mat-label>
-        <input matInput [(ngModel)]="userService.user.FirstName" name="first" required>
-      </mat-form-field>
-      <span class="error" *ngIf="flagOnError && userService.user.FirstName == ''">First Name is required</span>
-      <mat-form-field appearance="fill">
-        <mat-label>Last Name</mat-label>
-        <input matInput [(ngModel)]="userService.user.LastName" name="last" required>
-      </mat-form-field>
-      <span class="error" *ngIf="flagOnError && userService.user.LastName == ''">Last Name is required</span>
-      <mat-form-field appearance="fill">
-        <mat-label>Birthday</mat-label>
-        <input matInput [matDatepicker]="picker" [(ngModel)]="userService.user.birthday" name="birth" required>
-        <mat-hint>DD/MM/YYYY</mat-hint>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-      <span class="error" *ngIf="flagOnError && userService.isBirthdayInvalid(userService.user.birthday)">Birthday is not valid</span>
-      <mat-form-field appearance="fill">
-        <mat-label>TZ</mat-label>
-        <input matInput [(ngModel)]="userService.user.TZ" name="tz" required minlength="9" maxlength="9">
-      </mat-form-field>
-      <span class="error" *ngIf="flagOnError && userService.user.TZ ==''">TZ is required</span>
-      <span class="error" *ngIf="flagOnError && userService.user.TZ.length < 9">TZ must contains 9 chars</span>
-      <mat-radio-group aria-label="Gender" [(ngModel)]="userService.user.Gender" required name="gender">
-        <mat-radio-button value="1">Female</mat-radio-button>
-        <mat-radio-button value="2">Male</mat-radio-button>
-      </mat-radio-group>
-      <span class="error" *ngIf="flagOnError && userService.user.Gender == -1">Gender is required</span>
-      <mat-form-field appearance="fill">
-        <mat-label>HMO</mat-label>
-        <mat-select [(ngModel)]="userService.user.HMO" name="hmo" required="">
-          <mat-option *ngFor="let kupa of userService.kupot" [value]="kupa.value">
-            {{kupa.viewValue}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-      <span class="error" *ngIf="flagOnError && userService.user.HMO == -1">HMO is required</span>
-      <a class="link" (click)="userService.showChildComponent=!userService.showChildComponent">+ Add Child</a>
+  <mat-form-field appearance="fill">
+       <mat-label>First Name</mat-label>
+       <input matInput [(ngModel)]="userService.user.FirstName" name="first" required>
+     </mat-form-field>
+     <span class="error" *ngIf="flagOnError && userService.user.FirstName == ''">First Name is required</span>
+     <mat-form-field appearance="fill">
+       <mat-label>Last Name</mat-label>
+       <input matInput [(ngModel)]="userService.user.LastName" name="last" required>
+     </mat-form-field>
+     <span class="error" *ngIf="flagOnError && userService.user.LastName == ''">Last Name is required</span>
+     <mat-form-field appearance="fill">
+       <mat-label>Birthday</mat-label>
+       <input matInput [matDatepicker]="picker" [(ngModel)]="userService.user.birthday" name="birth" required>
+       <mat-hint>DD/MM/YYYY</mat-hint>
+       <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+       <mat-datepicker #picker></mat-datepicker>
+     </mat-form-field>
+     <span class="error" *ngIf="flagOnError && userService.isBirthdayInvalid(userService.user.birthday)">Birthday is not valid</span>
+     <mat-form-field appearance="fill">
+       <mat-label>TZ</mat-label>
+       <input matInput [(ngModel)]="userService.user.TZ" name="tz" required minlength="9" maxlength="9" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
+     </mat-form-field>
+     <span class="error" *ngIf="flagOnError && userService.user.TZ ==''">TZ is required</span>
+     <span class="error" *ngIf="flagOnError && userService.user.TZ.length < 9">TZ must contains 9 chars</span>
+     <mat-radio-group aria-label="Gender" [(ngModel)]="userService.user.Gender" required name="gender">
+       <mat-radio-button value="1">Female</mat-radio-button>
+       <mat-radio-button value="2">Male</mat-radio-button>
+     </mat-radio-group>
+     <span class="error" *ngIf="flagOnError && userService.user.Gender == -1">Gender is required</span>
+     <mat-form-field appearance="fill">
+       <mat-label>HMO</mat-label>
+       <mat-select [(ngModel)]="userService.user.HMO" name="hmo" required="">
+         <mat-option *ngFor="let kupa of userService.kupot" [value]="kupa.value">
+           {{kupa.viewValue}}
+         </mat-option>
+       </mat-select>
+     </mat-form-field>
+     <span class="error" *ngIf="flagOnError && userService.user.HMO == -1">HMO is required</span>
+     <a class="link" (click)="userService.showChildComponent=!userService.showChildComponent">+ Add Child</a>
 </div>
 <div class="child" *ngIf="userService.showChildComponent == true">
-    <app-child></app-child>
+   <app-child></app-child>
 </div>
 </div>
 <div class="bottom">
-    <button mat-raised-button color="primary" (click)="saveUser()">SAVE All</button>
+   <button mat-raised-button color="primary" (click)="saveUser()">SAVE All</button>
 </div>
 </form>

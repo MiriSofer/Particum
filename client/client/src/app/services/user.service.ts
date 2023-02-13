@@ -14,6 +14,7 @@ export class UserService {
     {value: 1, viewValue: 'Macabbi'},
     {value: 2, viewValue: 'Mehuchedet'},
     {value: 3, viewValue: 'Leumit'},
+    {value: 4, viewValue: 'Clalit'},
   ];
   public user:User = new User("","",new Date(),"",-1,-1,undefined);
   public children:User[]=[];

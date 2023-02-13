@@ -21,8 +21,9 @@ childrenToExport:any[] = [];
     private excelService:ExcelService) { }
 
   ngOnInit(): void {
-    
-  }
+
+  } 
+  
   saveUser(){
     if( this.userService.user.TZ.length < 9
     || this.userService.user.birthday > new Date() || this.userService.user.TZ.length>9 
@@ -68,6 +69,7 @@ childrenToExport:any[] = [];
     let msg = `Parent and Children have been saved!`;
     msg += errorMsg;
     this._snackBar.open(msg, "Success",{duration:6000});
+    this.userService.showChildComponent=false;
     this.exportAsXLSX();
     this.childrenToExport = [];
     this.userService.children = [];

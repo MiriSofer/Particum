@@ -15,7 +15,7 @@
           <span class="error" *ngIf="flagOnErrorChild && userService.isBirthdayInvalid(userService.child.birthday)">Birthday is invalid</span>
           <mat-form-field appearance="fill">
             <mat-label>TZ</mat-label>
-            <input matInput [(ngModel)]="userService.child.TZ" name="tz"  required minlength="9" maxlength="9">
+            <input matInput [(ngModel)]="userService.child.TZ" name="tz"  required minlength="9" maxlength="9" onkeyup="this.value=this.value.replace(/[^\d]/,'')">
           </mat-form-field>
           <span class="error" *ngIf="flagOnErrorChild && userService.child.TZ == ''">TZ is required</span>
           <span class="error" *ngIf="flagOnErrorChild && userService.child.TZ.length<9">TZ must contains 9 chars</span>
